@@ -1,0 +1,185 @@
+<worldNode>
+  <nodeName>world</nodeName>
+  <value class="string"></value>
+  <childrenArray>
+    <anyNaturalNode>
+      <displayName>max_time</displayName>
+      <nodeName>max_time</nodeName>
+      <value class="int">10000000</value>
+      <childrenArray/>
+    </anyNaturalNode>
+    <eventHandlerNode>
+      <nodeName>event-handler</nodeName>
+      <childrenArray/>
+    </eventHandlerNode>
+    <defaultAvatarNode>
+      <nodeName>Default Avatar</nodeName>
+      <childrenArray>
+        <avatarPropertiesNode>
+          <nodeName>avatar-properties</nodeName>
+          <childrenArray>
+            <gridPositionNode>
+              <nodeName>pos</nodeName>
+              <childrenArray>
+                <gridCoordinateNode>
+                  <nodeName>x</nodeName>
+                  <value class="float">128.0</value>
+                  <childrenArray/>
+                </gridCoordinateNode>
+                <gridCoordinateNode>
+                  <nodeName>y</nodeName>
+                  <value class="float">128.0</value>
+                  <childrenArray/>
+                </gridCoordinateNode>
+                <gridCoordinateNode>
+                  <nodeName>z</nodeName>
+                  <value class="float">0.0</value>
+                  <childrenArray/>
+                </gridCoordinateNode>
+              </childrenArray>
+            </gridPositionNode>
+          </childrenArray>
+        </avatarPropertiesNode>
+        <eventHandlerNode>
+          <nodeName>event-handler</nodeName>
+          <childrenArray/>
+        </eventHandlerNode>
+      </childrenArray>
+    </defaultAvatarNode>
+    <objectNode>
+      <nodeName>Spline Controller</nodeName>
+      <childrenArray>
+        <objectPropertiesNode>
+          <nodeName>object-properties</nodeName>
+          <childrenArray>
+            <gridPositionNode>
+              <nodeName>pos</nodeName>
+              <childrenArray>
+                <gridCoordinateNode>
+                  <nodeName>x</nodeName>
+                  <value class="float">128.0</value>
+                  <childrenArray/>
+                </gridCoordinateNode>
+                <gridCoordinateNode>
+                  <nodeName>y</nodeName>
+                  <value class="float">128.0</value>
+                  <childrenArray/>
+                </gridCoordinateNode>
+                <gridCoordinateNode>
+                  <nodeName>z</nodeName>
+                  <value class="float">0.0</value>
+                  <childrenArray/>
+                </gridCoordinateNode>
+              </childrenArray>
+            </gridPositionNode>
+          </childrenArray>
+        </objectPropertiesNode>
+        <primNode>
+          <nodeName>Spline Controller</nodeName>
+          <childrenArray>
+            <primPropertiesNode>
+              <nodeName>prim-properties</nodeName>
+              <childrenArray>
+                <gridPositionNode>
+                  <nodeName>pos</nodeName>
+                  <childrenArray>
+                    <gridCoordinateNode>
+                      <nodeName>x</nodeName>
+                      <value class="float">0.0</value>
+                      <childrenArray/>
+                    </gridCoordinateNode>
+                    <gridCoordinateNode>
+                      <nodeName>y</nodeName>
+                      <value class="float">0.0</value>
+                      <childrenArray/>
+                    </gridCoordinateNode>
+                    <gridCoordinateNode>
+                      <nodeName>z</nodeName>
+                      <value class="float">0.0</value>
+                      <childrenArray/>
+                    </gridCoordinateNode>
+                  </childrenArray>
+                </gridPositionNode>
+                <avatarReferenceNode>
+                  <nodeName>owner</nodeName>
+                  <value class="string">Default Avatar</value>
+                  <childrenArray/>
+                </avatarReferenceNode>
+                <stringNode>
+                  <nodeName>description</nodeName>
+                  <value class="string"></value>
+                  <childrenArray/>
+                </stringNode>
+              </childrenArray>
+            </primPropertiesNode>
+            <scriptNode>
+              <nodeName>Spline Control</nodeName>
+              <value class="string">Spline Control.Spline Control.lslp</value>
+              <childrenArray/>
+            </scriptNode>
+            <lslplus.sim.SimProjectNodes_-InventoryObjectNode>
+              <nodeName>control</nodeName>
+              <childrenArray>
+                <inventoryPropertiesNode>
+                  <nodeName>properties</nodeName>
+                  <childrenArray>
+                    <avatarReferenceNode>
+                      <nodeName>creator</nodeName>
+                      <value class="string">Default Avatar</value>
+                      <childrenArray/>
+                    </avatarReferenceNode>
+                  </childrenArray>
+                </inventoryPropertiesNode>
+                <primNode>
+                  <nodeName>control</nodeName>
+                  <childrenArray>
+                    <primPropertiesNode>
+                      <nodeName>prim-properties</nodeName>
+                      <childrenArray>
+                        <gridPositionNode>
+                          <nodeName>pos</nodeName>
+                          <childrenArray>
+                            <gridCoordinateNode>
+                              <nodeName>x</nodeName>
+                              <value class="float">0.0</value>
+                              <childrenArray/>
+                            </gridCoordinateNode>
+                            <gridCoordinateNode>
+                              <nodeName>y</nodeName>
+                              <value class="float">0.0</value>
+                              <childrenArray/>
+                            </gridCoordinateNode>
+                            <gridCoordinateNode>
+                              <nodeName>z</nodeName>
+                              <value class="float">0.0</value>
+                              <childrenArray/>
+                            </gridCoordinateNode>
+                          </childrenArray>
+                        </gridPositionNode>
+                        <avatarReferenceNode>
+                          <nodeName>owner</nodeName>
+                          <value class="string">Default Avatar</value>
+                          <childrenArray/>
+                        </avatarReferenceNode>
+                        <stringNode>
+                          <nodeName>description</nodeName>
+                          <value class="string"></value>
+                          <childrenArray/>
+                        </stringNode>
+                      </childrenArray>
+                    </primPropertiesNode>
+                    <scriptNode>
+                      <nodeName>control</nodeName>
+                      <value class="string">Spline Control.Control Point.lslp</value>
+                      <childrenArray/>
+                    </scriptNode>
+                  </childrenArray>
+                </primNode>
+              </childrenArray>
+            </lslplus.sim.SimProjectNodes_-InventoryObjectNode>
+          </childrenArray>
+        </primNode>
+      </childrenArray>
+    </objectNode>
+  </childrenArray>
+</worldNode>

@@ -1,0 +1,54 @@
+<tests>
+  <lsl-test>
+    <name>UpdateBezier</name>
+    <entryPoint>
+      <fileName>Spline Control.Spline Control.lslp</fileName>
+      <path>UpdateBezier</path>
+    </entryPoint>
+    <arguments/>
+    <expectedReturn/>
+    <expectations>
+      <mode>nice</mode>
+      <calls/>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>CONTROL_POINTS</name>
+        <value class="lsl-list1">[&quot;key1&quot;,&quot;key2&quot;,&quot;key3&quot;,&quot;key4&quot;]</value>
+      </globalBinding>
+      <globalBinding>
+        <name>ANCHOR_POINTS</name>
+        <value class="lsl-list1">[1,0,1,1]</value>
+      </globalBinding>
+      <globalBinding>
+        <name>BEZ_ENABLED</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+      <globalBinding>
+        <name>BEZ_POSITION</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+      <globalBinding>
+        <name>BEZ_SCALE</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+      <globalBinding>
+        <name>BEZ_ROTATION</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">0</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">10</value>
+      </globalBinding>
+      <globalBinding>
+        <name>MY_ID</name>
+        <value class="lsl-integer">10</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings/>
+  </lsl-test>
+</tests>

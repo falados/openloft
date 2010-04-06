@@ -1,0 +1,111 @@
+$module ()
+
+// -- CONSTANTS -- //
+integer CUT_START;
+integer CUT_END;
+integer BROADCAST_CHANNEL=-1;
+integer SELECTION_CHANNEL=-1;
+integer MY_ID;
+integer VERTS_PER_CUT;
+integer TOTAL_CUTS;
+integer ACCESS_LEVEL;
+
+// -- GLOBALS -- //
+integer gListenHandle_Broadcast;
+key		gBaseKey;
+
+// Precaches the object's children on the sim
+Precache()
+{
+	string name;
+	integer num = llGetInventoryNumber(INVENTORY_OBJECT);
+	integer i;
+	vector pos = llGetPos();
+	for( i = 0; i < num; ++i)
+	{
+		llRezObject(llGetInventoryName(INVENTORY_OBJECT,i),pos,ZERO_VECTOR,ZERO_ROTATION,0);
+	}
+	llDie();
+}
+
+HandleRez(integer param)
+{
+	if(param != 0)
+	{
+		BROADCAST_CHANNEL	= param & 0xFFFFFF00;
+		MY_ID				= param & 0xFF;
+		llListenRemove(gListenHandle_Broadcast);
+		gListenHandle_Broadcast = llListen(BROADCAST_CHANNEL,"","","");
+	} else {
+		Precache();
+	}
+}
+
+// Handles a root command
+// Returns true if the command was handled
+// Returns false if the command was not handled
+integer HandleRootCommands(string message, key id)
+{
+    if( llSubStringIndex(message,"#setup#") == 0 )
+    {
+        list l = llCSV2List(llGetSubString(message,7,-1));
+        gBaseKey = id;
+        VERTS_PER_CUT = llList2Integer(l,0);
+        ACCESS_LEVEL = llList2Integer(l,1);
+        TOTAL_CUTS =  llList2Integer(l,2);
+        return TRUE;
+    }
+    if( message == "#die#" || message == "#die#" + (string)llGetKey() )
+    {
+    	llDie();
+    	//No need for return
+    }
+    return FALSE;
+}
+
+integer StartSelectionMode()
+{
+	SELECTION_CHANNEL = llFloor(llFrand(-1000000)-1000000);
+	llRegionSay(BROADCAST_CHANNEL,"#select#" + (string)SELECTION_CHANNEL);
+	CUT_START = -1;
+	CUT_END   = -1;
+}
+
+integer HandleSelection(string message)
+{
+	if( llSubStringIndex(message,"#selected#") == 0 )
+	{
+		integer i = ((integer)llGetSubString(message,10,-1));
+		if( CUT_START == -1 ) {CUT_START = i;}
+		else if( CUT_END == -1 ) {
+			CUT_END = i;
+			if( CUT_END < CUT_START )
+			{
+				CUT_END = CUT_START;
+				CUT_START = i;
+			}
+			return TRUE;
+		}
+	}
+	return FALSE;
+}
+
+integer CanAccess(key agent)
+{
+    //Everyone has access
+    if(ACCESS_LEVEL == 0) return TRUE;
+    else
+    //Owner has access
+    if(ACCESS_LEVEL == 2)
+    {
+        return agent == llGetOwner();
+    }
+    else
+    //Group has access
+    if(ACCESS_LEVEL == 1)
+    {
+        return llSameGroup(agent);
+    }
+    //Failed
+    return FALSE;
+}

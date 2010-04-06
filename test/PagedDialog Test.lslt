@@ -1,0 +1,100 @@
+<tests>
+  <lsl-test>
+    <name>Dialog</name>
+    <entryPoint>
+      <fileName>PagedDialog.lslm</fileName>
+      <path>SendDialog</path>
+    </entryPoint>
+    <arguments>
+      <lsl-key>&quot;agent_key&quot;</lsl-key>
+      <lsl-string>&quot;message&quot;</lsl-string>
+      <lsl-list1>[&quot;b1&quot;,&quot;b2&quot;,&quot;b3&quot;]</lsl-list1>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">101</val>
+    </expectedReturn>
+    <expectations>
+      <mode>normal</mode>
+      <calls>
+        <call>
+          <name>llFrand</name>
+          <returns class="lsl-float">100</returns>
+          <args>
+            <maybe-value>
+              <val class="lsl-float">DEBUG_CHANNEL-1</val>
+            </maybe-value>
+          </args>
+        </call>
+        <call>
+          <name>llMessageLinked</name>
+          <returns class="lsl-void"/>
+          <args>
+            <maybe-value>
+              <val class="lsl-integer">-1</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-integer">101</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-string">&quot;agent_key,message,b1,b2,b3&quot;</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-key">&quot;#dialog#&quot;</val>
+            </maybe-value>
+          </args>
+        </call>
+      </calls>
+    </expectations>
+    <initialBindings/>
+    <finalBindings/>
+  </lsl-test>
+  <lsl-test>
+    <name>Dialog Annotated</name>
+    <entryPoint>
+      <fileName>PagedDialog.lslm</fileName>
+      <path>SendDialogAnnotated</path>
+    </entryPoint>
+    <arguments>
+      <lsl-key>&quot;agent_key&quot;</lsl-key>
+      <lsl-string>&quot;message&quot;</lsl-string>
+      <lsl-list1>[&quot;Button Desc&quot;,&quot;b1&quot;]</lsl-list1>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">101</val>
+    </expectedReturn>
+    <expectations>
+      <mode>normal</mode>
+      <calls>
+        <call>
+          <name>llFrand</name>
+          <returns class="lsl-float">100</returns>
+          <args>
+            <maybe-value>
+              <val class="lsl-float">DEBUG_CHANNEL-1</val>
+            </maybe-value>
+          </args>
+        </call>
+        <call>
+          <name>llMessageLinked</name>
+          <returns class="lsl-void"/>
+          <args>
+            <maybe-value>
+              <val class="lsl-integer">-1</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-integer">101</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-string">&quot;agent_key,messageButton Desc,b1&quot;</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-key">&quot;#dialog#&quot;</val>
+            </maybe-value>
+          </args>
+        </call>
+      </calls>
+    </expectations>
+    <initialBindings/>
+    <finalBindings/>
+  </lsl-test>
+</tests>

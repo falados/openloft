@@ -1,0 +1,3 @@
+[submodule "fksllib"]
+	path = fksllib
+	url = git@github.com:falados/fksllib.git

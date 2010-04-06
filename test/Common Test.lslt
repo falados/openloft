@@ -1,0 +1,562 @@
+<tests>
+  <lsl-test>
+    <name>Access All</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>CanAccess</path>
+    </entryPoint>
+    <arguments>
+      <lsl-key>&quot;anykey&quot;</lsl-key>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">1</val>
+    </expectedReturn>
+    <expectations>
+      <mode>nice</mode>
+      <calls/>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>ACCESS_LEVEL</name>
+        <value class="lsl-integer">0</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings/>
+  </lsl-test>
+  <lsl-test>
+    <name>Access Group (Success)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>CanAccess</path>
+    </entryPoint>
+    <arguments>
+      <lsl-key>&quot;agent_key&quot;</lsl-key>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">1</val>
+    </expectedReturn>
+    <expectations>
+      <mode>strict</mode>
+      <calls>
+        <call>
+          <name>llSameGroup</name>
+          <returns class="lsl-integer">1</returns>
+          <args>
+            <maybe-value>
+              <val class="lsl-key">&quot;agent_key&quot;</val>
+            </maybe-value>
+          </args>
+        </call>
+      </calls>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>ACCESS_LEVEL</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings/>
+  </lsl-test>
+  <lsl-test>
+    <name>Access Group (Failed)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>CanAccess</path>
+    </entryPoint>
+    <arguments>
+      <lsl-key>&quot;agent_key&quot;</lsl-key>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">0</val>
+    </expectedReturn>
+    <expectations>
+      <mode>strict</mode>
+      <calls>
+        <call>
+          <name>llSameGroup</name>
+          <returns class="lsl-integer">0</returns>
+          <args>
+            <maybe-value>
+              <val class="lsl-key">&quot;agent_key&quot;</val>
+            </maybe-value>
+          </args>
+        </call>
+      </calls>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>ACCESS_LEVEL</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings/>
+  </lsl-test>
+  <lsl-test>
+    <name>Access Owner (Success)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>CanAccess</path>
+    </entryPoint>
+    <arguments>
+      <lsl-key>&quot;owner_key&quot;</lsl-key>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">1</val>
+    </expectedReturn>
+    <expectations>
+      <mode>strict</mode>
+      <calls>
+        <call>
+          <name>llGetOwner</name>
+          <returns class="lsl-key">&quot;owner_key&quot;</returns>
+          <args/>
+        </call>
+      </calls>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>ACCESS_LEVEL</name>
+        <value class="lsl-integer">2</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings/>
+  </lsl-test>
+  <lsl-test>
+    <name>Access Owner (Failed)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>CanAccess</path>
+    </entryPoint>
+    <arguments>
+      <lsl-key>&quot;not_owner_key&quot;</lsl-key>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">0</val>
+    </expectedReturn>
+    <expectations>
+      <mode>strict</mode>
+      <calls>
+        <call>
+          <name>llGetOwner</name>
+          <returns class="lsl-key">&quot;owner_key&quot;</returns>
+          <args/>
+        </call>
+      </calls>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>ACCESS_LEVEL</name>
+        <value class="lsl-integer">2</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings/>
+  </lsl-test>
+  <lsl-test>
+    <name>Handle Rez (Normal)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>HandleRez</path>
+    </entryPoint>
+    <arguments>
+      <lsl-integer>1234567</lsl-integer>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-void"/>
+    </expectedReturn>
+    <expectations>
+      <mode>nice</mode>
+      <calls/>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>BROADCAST_CHANNEL</name>
+        <value class="lsl-integer">0</value>
+      </globalBinding>
+      <globalBinding>
+        <name>MY_ID</name>
+        <value class="lsl-integer">0</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings>
+      <globalBinding>
+        <name>BROADCAST_CHANNEL</name>
+        <value class="lsl-integer">1234432</value>
+      </globalBinding>
+      <globalBinding>
+        <name>MY_ID</name>
+        <value class="lsl-integer">135</value>
+      </globalBinding>
+    </finalBindings>
+  </lsl-test>
+  <lsl-test>
+    <name>Handle Root Commands (Setup)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>HandleRootCommands</path>
+    </entryPoint>
+    <arguments>
+      <lsl-string>&quot;#setup#16,2,32&quot;</lsl-string>
+      <lsl-key>&quot;&quot;</lsl-key>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">1</val>
+    </expectedReturn>
+    <expectations>
+      <mode>nice</mode>
+      <calls/>
+    </expectations>
+    <initialBindings/>
+    <finalBindings>
+      <globalBinding>
+        <name>ACCESS_LEVEL</name>
+        <value class="lsl-integer">2</value>
+      </globalBinding>
+      <globalBinding>
+        <name>TOTAL_CUTS</name>
+        <value class="lsl-integer">32</value>
+      </globalBinding>
+      <globalBinding>
+        <name>VERTS_PER_CUT</name>
+        <value class="lsl-integer">16</value>
+      </globalBinding>
+      <globalBinding>
+        <name>gListenHandle_Broadcast</name>
+        <value class="lsl-integer">0</value>
+      </globalBinding>
+    </finalBindings>
+  </lsl-test>
+  <lsl-test>
+    <name>Handle Root Commands (Die All)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>HandleRootCommands</path>
+    </entryPoint>
+    <arguments>
+      <lsl-string>&quot;#die#&quot;</lsl-string>
+      <lsl-key>&quot;&quot;</lsl-key>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">0</val>
+    </expectedReturn>
+    <expectations>
+      <mode>exhaust</mode>
+      <calls>
+        <call>
+          <name>llGetKey</name>
+          <returns class="lsl-key">&quot;my_key&quot;</returns>
+          <args/>
+        </call>
+        <call>
+          <name>llDie</name>
+          <returns class="lsl-void"/>
+          <args/>
+        </call>
+      </calls>
+    </expectations>
+    <initialBindings/>
+    <finalBindings/>
+  </lsl-test>
+  <lsl-test>
+    <name>Handle Root Commands (Die Me)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>HandleRootCommands</path>
+    </entryPoint>
+    <arguments>
+      <lsl-string>&quot;#die#my_key&quot;</lsl-string>
+      <lsl-key>&quot;&quot;</lsl-key>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">0</val>
+    </expectedReturn>
+    <expectations>
+      <mode>exhaust</mode>
+      <calls>
+        <call>
+          <name>llGetKey</name>
+          <returns class="lsl-key">&quot;my_key&quot;</returns>
+          <args/>
+        </call>
+        <call>
+          <name>llDie</name>
+          <returns class="lsl-void"/>
+          <args/>
+        </call>
+      </calls>
+    </expectations>
+    <initialBindings/>
+    <finalBindings/>
+  </lsl-test>
+  <lsl-test>
+    <name>Handle Selection (Start)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>HandleSelection</path>
+    </entryPoint>
+    <arguments>
+      <lsl-string>&quot;#selected#1&quot;</lsl-string>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">0</val>
+    </expectedReturn>
+    <expectations>
+      <mode>nice</mode>
+      <calls/>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">-1</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">-1</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">-1</value>
+      </globalBinding>
+    </finalBindings>
+  </lsl-test>
+  <lsl-test>
+    <name>Handle Selection (End Ordered)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>HandleSelection</path>
+    </entryPoint>
+    <arguments>
+      <lsl-string>&quot;#selected#2&quot;</lsl-string>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">1</val>
+    </expectedReturn>
+    <expectations>
+      <mode>nice</mode>
+      <calls/>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">-1</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">2</value>
+      </globalBinding>
+    </finalBindings>
+  </lsl-test>
+  <lsl-test>
+    <name>Handle Selection (End Unordered)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>HandleSelection</path>
+    </entryPoint>
+    <arguments>
+      <lsl-string>&quot;#selected#0&quot;</lsl-string>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">1</val>
+    </expectedReturn>
+    <expectations>
+      <mode>nice</mode>
+      <calls/>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">-1</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">0</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+    </finalBindings>
+  </lsl-test>
+  <lsl-test>
+    <name>Handle Selection (Extra)</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>HandleSelection</path>
+    </entryPoint>
+    <arguments>
+      <lsl-string>&quot;#selected#3&quot;</lsl-string>
+    </arguments>
+    <expectedReturn>
+      <val class="lsl-integer">0</val>
+    </expectedReturn>
+    <expectations>
+      <mode>nice</mode>
+      <calls/>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">2</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">2</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">1</value>
+      </globalBinding>
+    </finalBindings>
+  </lsl-test>
+  <lsl-test>
+    <name>Precache</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>Precache</path>
+    </entryPoint>
+    <arguments/>
+    <expectedReturn>
+      <val class="lsl-void"/>
+    </expectedReturn>
+    <expectations>
+      <mode>strict</mode>
+      <calls>
+        <call>
+          <name>llGetInventoryNumber</name>
+          <returns class="lsl-integer">1</returns>
+          <args>
+            <maybe-value>
+              <val class="lsl-integer">6</val>
+            </maybe-value>
+          </args>
+        </call>
+        <call>
+          <name>llGetPos</name>
+          <returns class="lsl-vector">&lt;0,0,0&gt;</returns>
+          <args/>
+        </call>
+        <call>
+          <name>llGetInventoryName</name>
+          <returns class="lsl-string">&quot;Child&quot;</returns>
+          <args>
+            <maybe-value>
+              <val class="lsl-integer">6</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-integer">0</val>
+            </maybe-value>
+          </args>
+        </call>
+        <call>
+          <name>llRezObject</name>
+          <returns class="lsl-void"/>
+          <args>
+            <maybe-value>
+              <val class="lsl-string">&quot;Child&quot;</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-vector">&lt;0,0,0&gt;</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-vector">&lt;0,0,0&gt;</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-rotation">&lt;0,0,0,1&gt;</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-integer">0</val>
+            </maybe-value>
+          </args>
+        </call>
+      </calls>
+    </expectations>
+    <initialBindings/>
+    <finalBindings/>
+  </lsl-test>
+  <lsl-test>
+    <name>Start Selection</name>
+    <entryPoint>
+      <fileName>Common.lslm</fileName>
+      <path>StartSelectionMode</path>
+    </entryPoint>
+    <arguments/>
+    <expectedReturn/>
+    <expectations>
+      <mode>strict</mode>
+      <calls>
+        <call>
+          <name>llFrand</name>
+          <returns class="lsl-float">-999999</returns>
+          <args>
+            <maybe-value>
+              <val class="lsl-float">-1000000</val>
+            </maybe-value>
+          </args>
+        </call>
+        <call>
+          <name>llRegionSay</name>
+          <returns class="lsl-void"/>
+          <args>
+            <maybe-value>
+              <val class="lsl-integer">-1010</val>
+            </maybe-value>
+            <maybe-value>
+              <val class="lsl-string">&quot;#select#-1999999&quot;</val>
+            </maybe-value>
+          </args>
+        </call>
+      </calls>
+    </expectations>
+    <initialBindings>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">0</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">0</value>
+      </globalBinding>
+      <globalBinding>
+        <name>BROADCAST_CHANNEL</name>
+        <value class="lsl-integer">-1010</value>
+      </globalBinding>
+    </initialBindings>
+    <finalBindings>
+      <globalBinding>
+        <name>CUT_START</name>
+        <value class="lsl-integer">-1</value>
+      </globalBinding>
+      <globalBinding>
+        <name>CUT_END</name>
+        <value class="lsl-integer">-1</value>
+      </globalBinding>
+    </finalBindings>
+  </lsl-test>
+</tests>
